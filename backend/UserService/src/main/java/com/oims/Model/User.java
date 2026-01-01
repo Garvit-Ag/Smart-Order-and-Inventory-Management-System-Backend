@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class User {
+public class User{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
@@ -36,6 +36,9 @@ public class User {
 
     public enum Role {
         CUSTOMER,
-        ADMIN
+        ADMIN,
+        SALES_EXECUTIVE,
+        WAREHOUSE_MANAGER,
+        FINANCE_OFFICER
     }
 }

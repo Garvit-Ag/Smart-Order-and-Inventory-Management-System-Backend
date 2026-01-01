@@ -1,5 +1,7 @@
 package com.oims.dto;
 
+import java.time.LocalDate;
+
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
@@ -16,9 +18,6 @@ public class BillMailDto {
     @NotNull
     private Double amount;
 
-    @NotBlank
-    private String billingDate;
-
-    @NotBlank
-    private String paymentMode;
+    @NotNull
+    private LocalDate billingDate;
 }

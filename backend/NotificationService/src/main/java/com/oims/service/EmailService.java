@@ -5,7 +5,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.oims.dto.BillMailDto;
-import com.oims.dto.WelcomeMailDto;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,21 +16,20 @@ public class EmailService {
 	
 	private final JavaMailSender mailSender;
 	
-	public void sendWelcomeMail(@Valid WelcomeMailDto request) {
+	public void sendWelcomeMail(String mail, String name) {
 		SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(request.getEmail());
+        message.setTo(mail);
         message.setSubject("Welcome to OIMS!!");
         message.setText("""
                 Hello %s,
 
                 Welcome to OIMS!
-                We are glad to have you onboard. We are Ready to Serve you across the 
-                global with just a click :)
+                We are glad to have you onboard. We are Ready to Serve you across the global with just a click :)
 
                 Regards,
                 CEO
                 Garvit Agarwal
-                """.formatted(request.getName()));
+                """.formatted(name));
 
         mailSender.send(message);
 	}
@@ -41,25 +39,16 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(request.getEmail());
         message.setSubject("Your Bill Details - OIMS");
-        message.setText("""
-                Hello,
-
-                Bill ID: %d
-                Amount: Rs. %.2f
-                Payment Mode: %s
-                Billing Date: %s
-
-                Thank you for shopping with us! Hope to see you again.
-
-                Regards,
-                CEO
-                Garvit Agarwal
-                """.formatted(
-                request.getBillId(),
-                request.getAmount(),
-                request.getPaymentMode(),
-                request.getBillingDate()
-        ));
+        String body =
+                "Hello,\n\n" +
+                "Bill ID: " + request.getBillId() + "\n" +
+                "Amount: Rs. " + String.format("%.2f", request.getAmount()) + "\n" +
+                "Billing Date: " + request.getBillingDate() + "\n\n" +
+                "Thank you for shopping with us! Hope to see you again.\n\n" +
+                "Regards,\n" +
+                "CEO\n" +
+                "Garvit Agarwal";
+        message.setText(body);
 
         mailSender.send(message);
 	}

@@ -76,6 +76,10 @@ public class ProductService {
 		}
 		return new ResponseEntity<>(productRepository.findById(id).get(), HttpStatus.OK);
 	}
+
+	public Integer getStock(Integer id) {
+		return productRepository.findById(id).get().getStock();
+	}
 	
 	
 }

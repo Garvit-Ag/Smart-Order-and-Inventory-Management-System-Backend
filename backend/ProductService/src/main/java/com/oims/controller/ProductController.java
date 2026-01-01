@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +38,11 @@ public class ProductController {
 		return productService.getProduct();
 	}
 	
+	@GetMapping("/stock/{id}")
+	public Integer getStock(@PathVariable Integer id) {
+		return productService.getStock(id);
+	}
+	
 	@GetMapping("/get/{id}")
 	public ResponseEntity<Product> getProductById(@PathVariable Integer id){
 		return productService.getProductById(id);
@@ -47,7 +53,7 @@ public class ProductController {
         return productService.updateProductPrice(id,price);
     }
 	
-	@PatchMapping("/update/stock/{id}")
+	@PutMapping("/update/stock/{id}")
     public ResponseEntity<String> updateProduct(@PathVariable Integer id, @RequestParam Integer stock){
         return productService.updateProductStock(id,stock);
     }

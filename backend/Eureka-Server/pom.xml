@@ -8,11 +8,11 @@
 		<version>4.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.QuizApp</groupId>
-	<artifactId>service-registry</artifactId>
+	<groupId>com.oims</groupId>
+	<artifactId>Eureka-Server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>service-registry</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Eureka-Server</name>
+	<description>Service Registry</description>
 	<url/>
 	<licenses>
 		<license/>

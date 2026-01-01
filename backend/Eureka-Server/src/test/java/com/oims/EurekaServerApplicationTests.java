@@ -1,10 +1,10 @@
-package com.service_registry;
+package com.oims;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ServiceRegistryApplicationTests {
+class EurekaServerApplicationTests {
 
 	@Test
 	void contextLoads() {

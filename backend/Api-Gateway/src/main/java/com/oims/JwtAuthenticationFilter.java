@@ -34,7 +34,7 @@ public class JwtAuthenticationFilter implements GatewayFilter {
                 .header("X-User-Role", jwtUtil.extractRole(token))
                 .header("X-User-Id", jwtUtil.extractUserId(token))
                 .header("X-User-Email", jwtUtil.extractEmail(token))
-                .build(); // ✅ Saved to variable
+                .build();
 
         return chain.filter(exchange.mutate().request(modifiedRequest).build());
     }

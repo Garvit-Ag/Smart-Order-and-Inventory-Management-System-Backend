@@ -35,19 +35,28 @@ public class ProductService {
 		return new ResponseEntity<>(productRepository.findAll(), HttpStatus.OK);
 	}
 
-	public ResponseEntity<String> updateProduct(Integer id, Double price, Integer stock) throws Exception {
+	public ResponseEntity<String> updateProductPrice(Integer id, Double price){
 		if(!productRepository.existsById(id)) {
 			return new ResponseEntity<>("Product Doesnt Exist",HttpStatus.BAD_REQUEST) ;
 		}
 		if (price <= 0) {
-            throw new Exception("Price must be greater than zero");
-        }
-
-        if (stock < 0) {
-            throw new Exception("Stock cannot be negative");
+            throw new RuntimeException("Price must be greater than zero");
         }
 		Product product = productRepository.findById(id).get();
 		product.setPrice(price);
+		productRepository.save(product);
+		return new ResponseEntity<>("Product Properties Updated", HttpStatus.OK);
+	}
+	
+	public ResponseEntity<String> updateProductStock(Integer id, Integer stock){
+		if(!productRepository.existsById(id)) {
+			return new ResponseEntity<>("Product Doesnt Exist",HttpStatus.BAD_REQUEST) ;
+		}
+
+        if (stock < 0) {
+            throw new RuntimeException("Stock cannot be negative");
+        }
+		Product product = productRepository.findById(id).get();
 		product.setStock(stock);
 		productRepository.save(product);
 		return new ResponseEntity<>("Product Properties Updated", HttpStatus.OK);
@@ -59,6 +68,13 @@ public class ProductService {
 		}
 		productRepository.deleteById(id);
 		return new ResponseEntity<>("Product Removed Successfully", HttpStatus.OK);
+	}
+
+	public ResponseEntity<Product> getProductById(Integer id) {
+		if(!productRepository.existsById(id)) {
+			throw new RuntimeException("Product Don't Exist");
+		}
+		return new ResponseEntity<>(productRepository.findById(id).get(), HttpStatus.OK);
 	}
 	
 	

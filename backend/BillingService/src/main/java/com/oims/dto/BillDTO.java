@@ -8,10 +8,6 @@ import lombok.Data;
 @Data
 public class BillDTO {
 
-    @NotNull(message = "Order ID is required")
-    private Integer orderId;
-
-    @NotNull(message = "Amount is required")
     @Positive(message = "Amount must be greater than zero")
     private Double amount;
     

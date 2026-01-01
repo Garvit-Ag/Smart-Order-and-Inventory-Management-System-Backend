@@ -1,6 +1,5 @@
 package com.oims.service;
 
-import java.io.ObjectInputFilter.Status;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -10,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.oims.dto.BillDTO;
+import com.oims.dto.BillMailRequest;
+import com.oims.feign.NotificationInterface;
 import com.oims.model.Bill;
 import com.oims.model.Bill.PaymentMode;
 import com.oims.model.Bill.PaymentStatus;
@@ -24,16 +25,12 @@ public class BillService {
 
 	private final BillRepository billRepository;
 	
-	public ResponseEntity<String> createBill(@Valid BillDTO billDto) {
-		
-		if(billRepository.existsByOrderId(billDto.getOrderId())) {
-			return new ResponseEntity<String>("Bill For Order Already Exist", HttpStatus.BAD_REQUEST);
-		}
-		
+	private final NotificationInterface notificationInterface;
+	
+	public ResponseEntity<Integer> createBill(BillDTO billDto, String email) {
 		PaymentStatus billStatus = billDto.getPaymentMode() == PaymentMode.CASH ? PaymentStatus.PENDING: PaymentStatus.COMPLETED;
 		
 		Bill bill = Bill.builder()
-                .orderId(billDto.getOrderId())
                 .amount(billDto.getAmount())
                 .paymentMode(billDto.getPaymentMode())
                 .paymentStatus(billStatus)
@@ -41,8 +38,18 @@ public class BillService {
                 .billingTime(LocalTime.now())
                 .build();
 		
-        billRepository.save(bill);
-        return new ResponseEntity<>("Bill Generated", HttpStatus.CREATED);
+        bill = billRepository.save(bill);
+        
+        BillMailRequest billMailRequest = BillMailRequest.builder()
+        		.email(email)
+        		.billId(bill.getBillId())
+        		.amount(bill.getAmount())
+        		.billingDate(bill.getBillingDate())
+        		.build();
+        
+        notificationInterface.sendBillMail(billMailRequest);
+        
+        return new ResponseEntity<>(bill.getBillId(), HttpStatus.CREATED);
 	}
 
 	public ResponseEntity<List<Bill>> getAllBill() {

@@ -7,7 +7,4 @@ import com.oims.model.Bill;
 
 @Repository
 public interface BillRepository extends JpaRepository<Bill, Integer> {
-	
-	boolean existsByOrderId(Integer ID);
-	
 }

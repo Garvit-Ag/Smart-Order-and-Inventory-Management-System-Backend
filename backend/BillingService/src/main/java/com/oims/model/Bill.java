@@ -17,9 +17,6 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer billId;
 
-    @Column(nullable = false, unique = true)
-    private Integer orderId;
-
     @Column(nullable = false)
     private Double amount;
 

@@ -7,10 +7,6 @@ import lombok.Data;
 
 @Data
 public class OrderDto {
-
-    @NotNull
-    private Integer userId;
-
     @NotBlank
     private String address;
 
@@ -20,4 +16,7 @@ public class OrderDto {
     
     @NotEmpty
     private List<OrderItemDto> items;
+    
+    @NotNull(message = "payment mode is required")
+    private PaymentMode paymentMode;
 }

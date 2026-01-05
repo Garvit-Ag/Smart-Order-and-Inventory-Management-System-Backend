@@ -50,6 +50,25 @@ class UserControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(content().string("Registration Success"));
     }
+    
+    @Test
+    void registerUser_fail() throws Exception {
+
+        UserDTO userDTO = new UserDTO();
+        userDTO.setEmail("test@example.com");
+        userDTO.setPassword("Password123");
+        userDTO.setName("garvit");
+        userDTO.setNumber("12345678901");
+
+        when(userService.addUser(any(UserDTO.class)))
+                .thenReturn(new ResponseEntity<>("Registration Success",HttpStatus.CREATED));
+
+        mockMvc.perform(post("/auth/register")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(userDTO)))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.number").value("Invalid phone number"));
+    }
 
     @Test
     void loginUser_success() throws Exception {

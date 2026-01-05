@@ -34,9 +34,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, String>> handleAllExceptions(Exception ex) {
-        Map<String, String> map = new HashMap<>();
-        map.put("error", ex.getMessage() == null ? "unexpected error" : ex.getMessage());
-        return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<String> handleAllExceptions(Exception ex) {
+    	return new ResponseEntity<>(ex.getMessage() == null ? "unexpected error" : ex.getMessage() , HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

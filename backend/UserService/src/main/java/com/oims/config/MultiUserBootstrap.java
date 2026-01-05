@@ -48,14 +48,12 @@ public class MultiUserBootstrap {
     
     @PostConstruct
     public void createDefaultUsers() {
-        log.info("Starting default users bootstrap...");
         
         createOrUpdateUser(adminEmail, adminPassword, Role.ADMIN, "Admin");
         createOrUpdateUser(salesEmail, salesPassword, Role.SALES_EXECUTIVE, "Sales Executive");
         createOrUpdateUser(warehouseEmail, warehousePassword, Role.WAREHOUSE_MANAGER, "Warehouse Manager");
         createOrUpdateUser(financeEmail, financePassword, Role.FINANCE_OFFICER, "Finance Officer");
         
-        log.info("Default users bootstrap completed");
     }
     
     private void createOrUpdateUser(String email, String password, Role role, String roleName) {
@@ -72,7 +70,6 @@ public class MultiUserBootstrap {
             
             // Update role if different
             if (user.getRole() != role) {
-                log.info("Updating user {} to {} role", email, roleName);
                 user.setRole(role);
             }
             
@@ -80,7 +77,6 @@ public class MultiUserBootstrap {
             user.setPassword(passwordEncoder.encode(password));
             userRepository.save(user);
             
-            log.info("{} user {} has been updated successfully", roleName, email);
         } else {
             User newUser = new User();
             newUser.setEmail(email);
@@ -88,7 +84,6 @@ public class MultiUserBootstrap {
             newUser.setRole(role);
             userRepository.save(newUser);
             
-            log.info("{} user {} has been created successfully", roleName, email);
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.oims.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,21 +62,18 @@ public class UserService {
 			return new ResponseEntity<>("No user exist by that ID", HttpStatus.BAD_REQUEST);
 		}
 		userRepository.deleteById(Integer.valueOf(id));
-		return new ResponseEntity<>("User Removed ", HttpStatus.ACCEPTED);
+		return new ResponseEntity<>("User Removed ", HttpStatus.NO_CONTENT);
 	}
 
-	public LoginResponse login(@Valid LoginRequest request) {
-		 // Check if user exists
-        User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("User not found with email: " + request.getEmail()));
-
+	public ResponseEntity<String> login(@Valid LoginRequest request) {
+		Optional<User> user = userRepository.findByEmail(request.getEmail());
         // Verify password
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid password");
+        if (!userRepository.existsByEmail(request.getEmail()) || !passwordEncoder.matches(request.getPassword(), user.get().getPassword())) {
+            return new ResponseEntity<String>("Wrong Email or Password", HttpStatus.BAD_REQUEST);
         }
 
-        String token = jwtService.generateToken(user);
-        return new LoginResponse(token, user.getRole().name());
+        String token = jwtService.generateToken(user.get());
+        return new ResponseEntity<>(token, HttpStatus.OK);
 	}
 	
 	public UserProfileResponse getProfile(String email) {

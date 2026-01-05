@@ -40,7 +40,7 @@ public class OrderService {
 		for (OrderItemDto item : orderDto.getItems()) {
             Integer availableStock = productInterface.getStock(item.getProductId());
             if (availableStock < item.getQuantity()) {
-                throw new InsufficientStockException(item.getProductId(), item.getQuantity(), availableStock);
+            	return new ResponseEntity<>("Insufficient Stock for "+productInterface.getProductName(item.getProductId()).getBody(), HttpStatus.BAD_REQUEST);
             }
             stockMap.put(item.getProductId(), availableStock);
 		}

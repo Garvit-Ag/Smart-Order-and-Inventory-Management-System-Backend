@@ -17,4 +17,6 @@ public interface ProductInterface {
 	@PutMapping("/product/update/stock/{id}")
     public ResponseEntity<String> updateProduct(@PathVariable Integer id, @RequestParam Integer stock);
 	
+	@GetMapping("/product/get/name/{id}")
+	public ResponseEntity<String> getProductName(@PathVariable Integer id);
 }

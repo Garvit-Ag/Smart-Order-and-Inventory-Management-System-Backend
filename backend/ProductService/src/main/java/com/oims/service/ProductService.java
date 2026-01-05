@@ -40,7 +40,7 @@ public class ProductService {
 			return new ResponseEntity<>("Product Doesnt Exist",HttpStatus.BAD_REQUEST) ;
 		}
 		if (price <= 0) {
-            throw new RuntimeException("Price must be greater than zero");
+        	return new ResponseEntity<>("Price can't be negative or 0", HttpStatus.BAD_REQUEST);
         }
 		Product product = productRepository.findById(id).get();
 		product.setPrice(price);
@@ -54,7 +54,7 @@ public class ProductService {
 		}
 
         if (stock < 0) {
-            throw new RuntimeException("Stock cannot be negative");
+        	return new ResponseEntity<>("Stock can't be negative", HttpStatus.BAD_REQUEST);
         }
 		Product product = productRepository.findById(id).get();
 		product.setStock(stock);

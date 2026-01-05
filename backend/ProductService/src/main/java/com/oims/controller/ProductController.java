@@ -48,7 +48,7 @@ public class ProductController {
 		return productService.getProductById(id);
 	}
 	
-	@PatchMapping("/update/price/{id}")
+	@PutMapping("/update/price/{id}")
     public ResponseEntity<String> updateProduct(@PathVariable Integer id, @RequestParam Double price){
         return productService.updateProductPrice(id,price);
     }

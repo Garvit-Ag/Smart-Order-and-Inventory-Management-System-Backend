@@ -50,7 +50,7 @@ public class UserService {
 		
         userRepository.save(userObj);
                
-        return new ResponseEntity<>("Resgistered Success", HttpStatus.CREATED);
+        return new ResponseEntity<>("Registration Success", HttpStatus.CREATED);
 	}
 
 	public ResponseEntity<List<User>> getAllUsers() {

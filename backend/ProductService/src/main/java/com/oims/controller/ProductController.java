@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -61,5 +60,10 @@ public class ProductController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteProduct(@PathVariable Integer id){
 		return productService.deleteProduct(id);
+	}
+	
+	@GetMapping("/get/name/{id}")
+	public ResponseEntity<String> getProductName(@PathVariable Integer id){
+		return productService.getProductName(id);
 	}
 }

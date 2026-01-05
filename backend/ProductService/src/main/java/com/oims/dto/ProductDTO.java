@@ -21,4 +21,6 @@ public class ProductDTO {
     @NotNull
     @PositiveOrZero(message = "Stock cannot be negative")
     private Integer stock;
+    
+    private String url;
 }

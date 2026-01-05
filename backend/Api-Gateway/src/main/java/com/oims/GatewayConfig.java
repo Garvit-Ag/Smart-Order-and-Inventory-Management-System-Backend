@@ -26,7 +26,7 @@ public class GatewayConfig {
                         .uri("lb://UserService"))
                 // User routes
                 .route("customer-routes", r -> r
-                        .path("/auth/delete/{id}")
+                        .path("/auth/delete")
                         .filters(f -> f.filter(new RoleBasedAuthorizationFilter(jwtUtil, List.of("CUSTOMER"))))
                         .uri("lb://UserService"))
                 // Private routes - token required - Means not role specific
@@ -50,7 +50,7 @@ public class GatewayConfig {
                 
                 //Order Service
                 .route("customer-routes", r -> r
-                		.path("/order")
+                		.path("/order", "/order/{id}")
                 		.filters(f -> f.filter(new RoleBasedAuthorizationFilter(jwtUtil, List.of("CUSTOMER"))))
                 		.uri("lb://OrderService"))
                 .route("admin-routes", r -> r

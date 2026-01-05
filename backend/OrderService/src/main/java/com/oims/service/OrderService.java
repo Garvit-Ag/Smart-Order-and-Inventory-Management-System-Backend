@@ -1,11 +1,11 @@
 package com.oims.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 import com.oims.dto.BillRequest;
 import com.oims.dto.OrderDto;
 import com.oims.dto.OrderItemDto;
-import com.oims.dto.OrderResponse;
-import com.oims.dto.PaymentMode;
 import com.oims.exception.InsufficientStockException;
 import com.oims.feign.NotificationInterface;
 import com.oims.feign.ProductInterface;
@@ -89,33 +87,18 @@ public class OrderService {
         List<OrderItem> items = orderItemRepository.findByOrderId(id);
 
         if(items.isEmpty()) {
-        	throw new RuntimeException("Order Doesn't Exist");
+        	return new ResponseEntity<>(new ArrayList<>(), HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(items, HttpStatus.OK);
 		
 	}
 
-    public List<OrderResponse> getAllOrders() {
-        return orderRepository.findAll()
-                .stream()
-                .map(o -> mapToResponse(o, orderItemRepository.findByOrderId(o.getOrderId())))
-                .toList();
-    }
+    public List<OrderTable> getAllOrders() {
+        return orderRepository.findAll();               
+    }  
     
     public ResponseEntity<List<OrderTable>> getOrderByUserId(String userId) {
 		List<OrderTable> listOrder = orderRepository.findAllByUserId(Integer.valueOf(userId));
 		return new ResponseEntity<>(listOrder,HttpStatus.OK);
 	}
-    
-    private OrderResponse mapToResponse(OrderTable order, List<OrderItem> items) {
-        return OrderResponse.builder()
-                .orderId(order.getOrderId())
-                .userId(order.getUserId())
-                .orderStatus(order.getStatus())
-                .address(order.getAddress())
-                .amount(order.getAmount())
-                .orderDate(order.getOrderDate())
-                .items(items)
-                .build();
-    }
 }

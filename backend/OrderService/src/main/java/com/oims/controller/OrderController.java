@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oims.dto.OrderDto;
-import com.oims.dto.OrderResponse;
-import com.oims.dto.PaymentMode;
 import com.oims.model.OrderItem;
 import com.oims.model.OrderTable;
 import com.oims.service.OrderService;
@@ -44,7 +42,7 @@ public class OrderController {
 	}
 	
 	@GetMapping("/get")
-    public ResponseEntity<List<OrderResponse>> getAllOrders() {
+    public ResponseEntity<List<OrderTable>> getAllOrders() {
         return ResponseEntity.ok(orderService.getAllOrders());
     }
 	

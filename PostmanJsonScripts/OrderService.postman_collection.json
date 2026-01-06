@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "305a60c0-0dcb-4c56-9798-ecc91f21bb7d",
+		"name": "OrderService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50078798",
+		"_collection_link": "https://garvit-agarwal1706-1224548.postman.co/workspace/Garvit-Agarwal's-Workspace~b3b3f1cb-3276-4efe-855f-eafe5815d10b/collection/50078798-305a60c0-0dcb-4c56-9798-ecc91f21bb7d?action=share&source=collection_link&creator=50078798"
+	},
+	"item": [
+		{
+			"name": "Add order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW5pLmF1ZzE5MDhAZ21haWwuY29tIiwidXNlcklkIjoiNiIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc2NzI2MTI3MSwiZXhwIjoxNzY3NjIxMjcxfQ.m71cQavdovInUvFoucd-r0LwFoZsrTjdnHBRWUfWMsE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-User-Email",
+						"value": "rani.aug1908@gmail.com",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"address\": \"221B Baker Street, London\",\r\n  \"amount\": 2300,\r\n  \"paymentMode\": \"CASH\",\r\n  \"items\": [\r\n    {\r\n      \"productId\": 2,\r\n      \"quantity\": 2,\r\n      \"price\": 799.00\r\n    },\r\n    {\r\n      \"productId\": 3,\r\n      \"quantity\": 2,\r\n      \"price\": 1499.00\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Order Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBvaW1zLmNvbSIsInVzZXJJZCI6IjEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjcyNjUwOTcsImV4cCI6MTc2NzYyNTA5N30.Cj-hrPxnwRC-Bm_PGTmM-DN3lnmZ6YdO4ouTfqHQWP4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8765/order/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"order",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWxlc0BvaW1zLmNvbSIsInVzZXJJZCI6IjIiLCJyb2xlIjoiU0FMRVNfRVhFQ1VUSVZFIiwiaWF0IjoxNzY3MjY1MTUyLCJleHAiOjE3Njc2MjUxNTJ9.p2L5pINJ_JgJt-M8twbl_b27CaR74TkRKHlkO1vcQVQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8765/order/get",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"order",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All User Orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW5pLmF1ZzE5MDhAZ21haWwuY29tIiwidXNlcklkIjoiNiIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc2NzI2MTI3MSwiZXhwIjoxNzY3NjIxMjcxfQ.m71cQavdovInUvFoucd-r0LwFoZsrTjdnHBRWUfWMsE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8765/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

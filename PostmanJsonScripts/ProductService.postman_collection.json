@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "bd5fe9f3-bd24-42ae-a98d-e1b68af0dc93",
+		"name": "ProductService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50078798",
+		"_collection_link": "https://garvit-agarwal1706-1224548.postman.co/workspace/Garvit-Agarwal's-Workspace~b3b3f1cb-3276-4efe-855f-eafe5815d10b/collection/50078798-bd5fe9f3-bd24-42ae-a98d-e1b68af0dc93?action=share&source=collection_link&creator=50078798"
+	},
+	"item": [
+		{
+			"name": "Add Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBvaW1zLmNvbSIsInVzZXJJZCI6IjEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjcyNjUwOTcsImV4cCI6MTc2NzYyNTA5N30.Cj-hrPxnwRC-Bm_PGTmM-DN3lnmZ6YdO4ouTfqHQWP4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Iphone 17 Pro\",\r\n  \"description\": \"Most Powerful Iphone Ever\",\r\n  \"brand\": \"Apple\",\r\n  \"price\": 94999.00,\r\n  \"stock\": 10\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/product/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"product",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product By ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8765/product/get/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"product",
+						"get",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Price Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBvaW1zLmNvbSIsInVzZXJJZCI6IjEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjcyNjUwOTcsImV4cCI6MTc2NzYyNTA5N30.Cj-hrPxnwRC-Bm_PGTmM-DN3lnmZ6YdO4ouTfqHQWP4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8765/product/update/price/3?price=1599.00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"product",
+						"update",
+						"price",
+						"3"
+					],
+					"query": [
+						{
+							"key": "price",
+							"value": "1599.00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stock Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBvaW1zLmNvbSIsInVzZXJJZCI6IjEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjcyNjUwOTcsImV4cCI6MTc2NzYyNTA5N30.Cj-hrPxnwRC-Bm_PGTmM-DN3lnmZ6YdO4ouTfqHQWP4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8765/product/update/stock/3?stock=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"product",
+						"update",
+						"stock",
+						"3"
+					],
+					"query": [
+						{
+							"key": "stock",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8765/product/get",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"product",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Stock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBvaW1zLmNvbSIsInVzZXJJZCI6IjEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjcyNjUwOTcsImV4cCI6MTc2NzYyNTA5N30.Cj-hrPxnwRC-Bm_PGTmM-DN3lnmZ6YdO4ouTfqHQWP4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8765/product/stock/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"product",
+						"stock",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

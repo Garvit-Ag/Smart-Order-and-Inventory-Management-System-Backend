@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "d589a70f-c4bf-4789-b64e-88a2be080b40",
+		"name": "BillingService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50078798",
+		"_collection_link": "https://garvit-agarwal1706-1224548.postman.co/workspace/Garvit-Agarwal's-Workspace~b3b3f1cb-3276-4efe-855f-eafe5815d10b/collection/50078798-d589a70f-c4bf-4789-b64e-88a2be080b40?action=share&source=collection_link&creator=50078798"
+	},
+	"item": [
+		{
+			"name": "BillGenerate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-User-Email",
+						"value": "rani.aug1908@gmail.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 1599.00,\r\n  \"paymentMode\": \"CASH\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8085/billGenerate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"billGenerate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllBill",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBvaW1zLmNvbSIsInVzZXJJZCI6IjEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjcyNjUwOTcsImV4cCI6MTc2NzYyNTA5N30.Cj-hrPxnwRC-Bm_PGTmM-DN3lnmZ6YdO4ouTfqHQWP4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8765/bill",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"bill"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

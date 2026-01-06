@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "fa5af704-2a40-4a96-8040-14303f2ac1d6",
+		"name": "UserService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50078798",
+		"_collection_link": "https://garvit-agarwal1706-1224548.postman.co/workspace/Garvit-Agarwal's-Workspace~b3b3f1cb-3276-4efe-855f-eafe5815d10b/collection/50078798-fa5af704-2a40-4a96-8040-14303f2ac1d6?action=share&source=collection_link&creator=50078798"
+	},
+	"item": [
+		{
+			"name": "Duplicate Email",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\":\"Garvit\",\r\n  \"number\":\"8384936590\",\r\n  \"email\":\"rani.aug1908@gmail.com\",\r\n  \"password\":\"12345\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBvaW1zLmNvbSIsInVzZXJJZCI6IjEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjcyNjUwOTcsImV4cCI6MTc2NzYyNTA5N30.Cj-hrPxnwRC-Bm_PGTmM-DN3lnmZ6YdO4ouTfqHQWP4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8765/auth/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"auth",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW5pLmF1ZzE5MDhAZ21haWwuY29tIiwidXNlcklkIjoiNiIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc2NzI2MTI3MSwiZXhwIjoxNzY3NjIxMjcxfQ.m71cQavdovInUvFoucd-r0LwFoZsrTjdnHBRWUfWMsE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8765/auth/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"auth",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"finance@oims.com\",\r\n    \"password\":\"finance123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYW5pLmF1ZzE5MDhAZ21haWwuY29tIiwidXNlcklkIjoiNiIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc2NzI2MTI3MSwiZXhwIjoxNzY3NjIxMjcxfQ.m71cQavdovInUvFoucd-r0LwFoZsrTjdnHBRWUfWMsE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-User-Email",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8765/auth/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"auth",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid Phone Number",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\":\"Garvit\",\r\n  \"number\":\"83849365901\",\r\n  \"email\":\"rani.aug1908@gmail.com\",\r\n  \"password\":\"12345\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Successful Register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\":\"Garvit\",\r\n  \"number\":\"8384936590\",\r\n  \"email\":\"vasu.g03@gmail.com\",\r\n  \"password\":\"12345\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

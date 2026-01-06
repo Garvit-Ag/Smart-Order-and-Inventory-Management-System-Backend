@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "9204df02-a6db-4c38-9dd4-ef703a9c7a49",
+		"name": "NotificationService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50078798",
+		"_collection_link": "https://garvit-agarwal1706-1224548.postman.co/workspace/Garvit-Agarwal's-Workspace~b3b3f1cb-3276-4efe-855f-eafe5815d10b/collection/50078798-9204df02-a6db-4c38-9dd4-ef703a9c7a49?action=share&source=collection_link&creator=50078798"
+	},
+	"item": [
+		{
+			"name": "Welcome Mail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/welcomeMail?mail=rani.aug1908@gmail.com&name=Garvit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"welcomeMail"
+					],
+					"query": [
+						{
+							"key": "mail",
+							"value": "rani.aug1908@gmail.com"
+						},
+						{
+							"key": "name",
+							"value": "Garvit"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invoice Mail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\":\"rani.aug1908@gmail.com\",\r\n  \"billId\":101,\r\n  \"amount\":1000,\r\n  \"billingDate\":\"2025-01-01\",\r\n  \"paymentMode\": \"cash\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/invoiceMail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"invoiceMail"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

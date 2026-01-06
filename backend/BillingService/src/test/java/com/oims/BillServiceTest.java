@@ -105,7 +105,6 @@ class BillServiceTest {
     }
 
     // ================= NEGATIVE: NOTIFICATION FAILURE =================
-    // (Service should still save bill, exception will propagate)
 
     @Test
     void createBill_notificationFails() {

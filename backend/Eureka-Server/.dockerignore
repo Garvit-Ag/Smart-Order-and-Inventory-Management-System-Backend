@@ -1,0 +1,35 @@
+# Maven target (except final jar if needed)
+target/*
+!target/*.jar
+
+# Maven & Gradle cache
+.mvn/
+.gradle/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+logs/
+
+# Test & coverage
+surefire-reports/
+jacoco/
+coverage/
+
+# Docs
+README.md
+*.md

@@ -50,8 +50,12 @@ public class GatewayConfig {
                 
                 //Order Service
                 .route("customer-routes", r -> r
-                		.path("/order", "/order/{id}")
+                		.path("/order")
                 		.filters(f -> f.filter(new RoleBasedAuthorizationFilter(jwtUtil, List.of("CUSTOMER"))))
+                		.uri("lb://OrderService"))
+                .route("public-routes", r -> r
+                		.path("/order/{id}")
+                		.filters(f -> f.filter(new RoleBasedAuthorizationFilter(jwtUtil, List.of("CUSTOMER","ADMIN","SALES_EXECUTIVE"))))
                 		.uri("lb://OrderService"))
                 .route("admin-routes", r -> r
                 		.path("/order/**")
